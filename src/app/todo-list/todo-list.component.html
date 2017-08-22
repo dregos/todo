@@ -12,12 +12,19 @@
     <tr>
       <td>{{todoItem.order}}</td>
       <td>{{todoItem.task}}</td>
-      <td>{{todoItem.done}}</td>
+      <td>
+        <input type="checkbox"
+          [(ngModel)]="todoItem.done"
+          (click)="markDone(todoItem)">
+      </td>
 
       <td><button type="button" name="button" (click)="remove(todoItem)">Remove</button></td>
       <td>
-        <button type="button" name="button" (click)="moveUp(todoItem)">Move Up</button>
-        <button type="button" name="button" (click)="moveDown(todoItem)">Move Down</button>
+        <button *ngIf="todoList.indexOf(todoItem) > 0" type="button" name="button" (click)="moveUp(todoItem)">Move Up</button>
+        <button *ngIf="todoList.indexOf(todoItem) < todoList.length-1"
+          type="button" name="button" (click)="moveDown(todoItem)">
+          Move Down
+        </button>
       </td>
     </tr>
   </ng-container>

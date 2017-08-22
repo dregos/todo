@@ -1,9 +1,16 @@
 import { Component } from '@angular/core';
 
 export class TodoItem {
-  private order:number;
+  private _order:number;
   private task:string;
   private done:boolean;
+
+  get order():number {
+        return this._order;
+    }
+  set order(val:number) {
+      this._order = val;
+  }
 
   constructor(order, task, done) {
     this.order = order;
