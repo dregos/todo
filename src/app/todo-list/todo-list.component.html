@@ -1,0 +1,24 @@
+<h1>ToDo</h1>
+
+<table>
+  <tr>
+    <th>Order</th>
+    <th>Task</th>
+    <th>Done</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <ng-container *ngFor="let todoItem of todoList">
+    <tr>
+      <td>{{todoItem.order}}</td>
+      <td>{{todoItem.task}}</td>
+      <td>{{todoItem.done}}</td>
+
+      <td><button type="button" name="button" (click)="remove(todoItem)">Remove</button></td>
+      <td>
+        <button type="button" name="button" (click)="moveUp(todoItem)">Move Up</button>
+        <button type="button" name="button" (click)="moveDown(todoItem)">Move Down</button>
+      </td>
+    </tr>
+  </ng-container>
+</table>
