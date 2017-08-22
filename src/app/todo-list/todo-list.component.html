@@ -2,6 +2,21 @@
 
 <table>
   <tr>
+    <td>Task:</td>
+    <td>
+      <input type="text" [(ngModel)]="todoItem.task">
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" style="align-center">
+      <button type="button" name="button" (click)="add()">Add new</button>
+    </td>
+  </tr>
+</table>
+
+<hr>
+<table>
+  <tr>
     <th>Order</th>
     <th>Task</th>
     <th>Done</th>

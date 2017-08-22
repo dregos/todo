@@ -9,7 +9,7 @@ import { TodoItem } from './todo-item';
 
 export class TodoListComponent  {
   private todoList: TodoItem[];
-
+  private todoItem: TodoItem = new TodoItem('','', false);
 
   constructor() {
     this.todoList = [
@@ -27,6 +27,16 @@ export class TodoListComponent  {
     todoItem.done = true;
   }
 
+  add(){
+    const index = this.todoList.length-1;
+    //console.log('lastTodoItem index:'+index);
+    let lastTodoItem:TodoItem = this.todoList[index];
+    this.todoItem.order = lastTodoItem.order +  1;
+    this.todoList.push(this.todoItem);
+
+    this.todoItem = new TodoItem('','',false);
+  }
+
   moveUp(todoItem){
     const index = this.todoList.indexOf(todoItem);
     let previousItem:TodoItem = this.todoList[index-1];
@@ -41,7 +51,7 @@ export class TodoListComponent  {
     const index = this.todoList.indexOf(todoItem);
     let nextItem:TodoItem = this.todoList[index+1];
     this.todoList.splice(index, 1);
-    
+
     let nOrder:number = nextItem.order;
     nextItem.order = todoItem.order;
     todoItem.order = nOrder;
